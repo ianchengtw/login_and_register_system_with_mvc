@@ -68,7 +68,7 @@ class DB
 				}
 			}
 		}
-		return false;
+		return $this;
 	}
 
 	public function get($table, $where) {

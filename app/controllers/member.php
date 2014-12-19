@@ -22,7 +22,7 @@ class Member extends Controller
 											Input::get('password'),
 											$remember);
 					if ($login) {
-						Redirect::to('/');
+						Redirect::to(Config::get('page/home'));
 					} else {
 						echo '<p>Sorry, logging in failed.</p>';
 					}
@@ -43,7 +43,7 @@ class Member extends Controller
 	public function logout() {
 		global $USER;
 		$USER->logout();
-		Redirect::to('/');
+		Redirect::to(Config::get('page/login'));
 	}
 	public function register() {
 
@@ -90,10 +90,10 @@ class Member extends Controller
 						));
 
 						Session::flash('home', 'You have been registered and can now log in!');
-						Redirect::to('/');
+						Redirect::to(Config::get('page/login'));
 
 					} catch (Exception $e) {
-						$e->getMessage();
+						echo $e->getMessage();
 					}
 
 				} else {
