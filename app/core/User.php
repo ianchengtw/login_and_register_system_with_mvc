@@ -62,7 +62,7 @@ class User
 					Session::put($this->_sessionName, $this->data()->id);
 					$this->_isLoggedIn = true;
 
-					if (remember) {
+					if ($remember) {
 						$hash = Hash::unique();
 						$hashCheck = $this->_db->get('users_session', array('user_id', '=', $this->data()->id));
 
